@@ -2,7 +2,7 @@ from django.db import models
 
 # for custom user model and admin pannel
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
-from django.utils.translation import ugettext_lazy
+from django.utils.translation import gettext_lazy
 
 # automatically create one to one objects
 from django.db.models.signals import post_save
@@ -47,8 +47,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     """User model"""
     
     email = models.EmailField(unique=True)
-    is_staff = models.BooleanField(ugettext_lazy('staff status'), default=False, help_text= ugettext_lazy('Designates whether the user can log in this site'))
-    is_active = models.BooleanField(ugettext_lazy('active'), default=True, help_text=ugettext_lazy('Designates whether this user should be treated as active. Unselecte this insted of deleting accounts'))
+    is_staff = models.BooleanField(gettext_lazy('staff status'), default=False, help_text=gettext_lazy('Designates whether the user can log in this site'))
+    is_active = models.BooleanField(gettext_lazy('active'), default=True, help_text=gettext_lazy('Designates whether this user should be treated as active. Unselecte this insted of deleting accounts'))
 
     USERNAME_FIELD = 'email'
     objects = CustomUserManager()
