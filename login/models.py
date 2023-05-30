@@ -75,7 +75,7 @@ class Profile(models.Model):
     data_jained = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.user + "'s profile"
+        return str(self.user) + "'s profile"
     
     def is_fully_filled(self):
         """for check all fields are filled"""
