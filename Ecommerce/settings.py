@@ -39,8 +39,11 @@ INSTALLED_APPS = [
 ]
 
 # Bootstrap 4 setting
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# Custom user model
+AUTH_USER_MODEL = 'login.User' # change user model defalt to custom
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
