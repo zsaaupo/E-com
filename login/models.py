@@ -38,4 +38,22 @@ class CustomUserManager(BaseUserManager):
         
         return self._create_user(email, password, **extra_fields)
         
-        
+
+class User(AbstractBaseUser, PermissionsMixin):
+    """User model"""
+    
+    email = models.EmailField(unique=True)
+    is_staff = models.BooleanField(ugettext_lazy('staff status'), default=False, help_text= ugettext_lazy('Designates whether the user can log in this site'))
+    is_active = models.BooleanField(ugettext_lazy('active'), default=True, help_text=ugettext_lazy('Designates whether this user should be treated as active. Unselecte this insted of deleting accounts'))
+
+    USERNAME_FIELD = 'email'
+    objects = CustomUserManager()
+    
+    def __str__(self):
+        return self.email
+    
+    def get_full_name(self):
+        return self.email
+    
+    def get_short_name(self):
+        return self.email
